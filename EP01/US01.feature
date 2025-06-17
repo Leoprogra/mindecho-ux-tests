@@ -1,19 +1,24 @@
 Feature: US01 - Acceso sin registro al demo de la IA
-  Como visitante,
-  quiero interactuar con la IA sin crear una cuenta,
-  para decidir si me interesa la app antes de registrarme.
+  Como visitante de la landing page,
+  quiero poder probar la IA sin crear una cuenta,
+  para saber si me es útil antes de registrarme.
 
-  Scenario: E1 - Visualización del botón “Habla conmigo ahora”
-    Given estoy en la landing page
-    When hago scroll o accedo desde el móvil
-    Then debería visualizar un botón “Habla conmigo ahora”
+  Scenario: Escenario 1 - Visualización del botón del demo
+    Given que estoy en la página de inicio
+    When hago scroll o entro desde móvil
+    Then visualizo el botón “Habla conmigo ahora”
 
-  Scenario: E2 - Interacción sin login
-    Given hago clic en el botón del demo
-    When envío un mensaje
-    Then la IA debería responder sin pedirme registro
+  Scenario: Escenario 2 - Acceso al chat sin registro
+    Given que presiono el botón
+    When se abre la ventana de chat
+    Then puedo enviar mensajes sin iniciar sesión
 
-  Scenario: E3 - Límite del demo anónimo
-    Given estoy interactuando con el demo
-    When envío varios mensajes
-    Then debería aparecer el mensaje “Regístrate para continuar”
+  Scenario: Escenario 3 - Aviso de sesión anónima
+    Given que se abre el demo
+    When empiezo a interactuar
+    Then se muestra un aviso “Esta sesión es anónima y no se guarda”
+
+  Scenario: Escenario 4 - Límite de uso del demo
+    Given que uso el demo
+    When se alcanza el número máximo de mensajes
+    Then aparece un mensaje: “Regístrate para continuar”
